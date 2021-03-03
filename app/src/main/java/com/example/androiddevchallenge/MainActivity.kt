@@ -18,11 +18,23 @@ package com.example.androiddevchallenge
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.navigate
+import androidx.navigation.compose.rememberNavController
+import com.example.androiddevchallenge.navigation.AppNavHost
+import com.example.androiddevchallenge.navigation.Screen
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 class MainActivity : AppCompatActivity() {
@@ -39,9 +51,40 @@ class MainActivity : AppCompatActivity() {
 // Start building your app here!
 @Composable
 fun MyApp() {
+    val navHostController = rememberNavController()
+
     Surface(color = MaterialTheme.colors.background) {
-        Text(text = "Ready... Set... GO!")
+        Scaffold(
+            topBar = {
+                AppTopBar(title = "Cat Adoption"
+                ) { navHostController.navigate(Screen.Home.route) }
+            }
+        ) {
+            AppNavHost(navController = navHostController)
+        }
     }
+}
+
+@Composable
+fun AppTopBar(title: String, onAppBarIconClick: () -> Unit) {
+    TopAppBar(
+        title = { Text(text = title) },
+        actions = {
+            IconButton(onClick = { }) {
+                Icon(imageVector = Icons.Default.MoreVert, contentDescription = "More icon")
+            }
+        },
+        navigationIcon = {
+            Image(
+                painter = painterResource(id = R.drawable.cat),
+                contentDescription = "",
+                modifier = Modifier
+                    .clip(RoundedCornerShape(50))
+                    .height(45.dp)
+                    .clickable { onAppBarIconClick() }
+            )
+        }
+    )
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
