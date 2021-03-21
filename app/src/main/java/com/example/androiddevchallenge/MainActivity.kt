@@ -16,11 +16,15 @@
 package com.example.androiddevchallenge
 
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -28,21 +32,33 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.view.WindowCompat
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import com.example.androiddevchallenge.navigation.AppNavHost
 import com.example.androiddevchallenge.navigation.Screen
 import com.example.androiddevchallenge.ui.theme.MyTheme
+import dev.chrisbanes.accompanist.insets.ProvideWindowInsets
+import dev.chrisbanes.accompanist.insets.statusBarsPadding
+import dev.chrisbanes.accompanist.insets.systemBarsPadding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
-            MyTheme {
-                MyApp()
+            window.statusBarColor = Color.Black.copy(alpha = 0.4f).toArgb()
+            window.navigationBarColor = Color.Transparent.toArgb()
+            window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WALLPAPER)
+            ProvideWindowInsets(consumeWindowInsets = true) {
+                MyTheme {
+                    MyApp()
+                }
             }
         }
     }
@@ -53,10 +69,15 @@ class MainActivity : AppCompatActivity() {
 fun MyApp() {
     val navHostController = rememberNavController()
 
-    Surface(color = MaterialTheme.colors.background) {
+    Surface(
+        color = MaterialTheme.colors.background,
+        modifier = Modifier
+            .statusBarsPadding()
+    ) {
         Scaffold(
             topBar = {
-                AppTopBar(title = "Cat Adoption"
+                AppTopBar(
+                    title = "Cat Adoption"
                 ) { navHostController.navigate(Screen.Home.route) }
             }
         ) {
