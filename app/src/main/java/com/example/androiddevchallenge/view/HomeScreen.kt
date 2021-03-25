@@ -22,8 +22,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.domain.Breed
-import com.example.androiddevchallenge.domain.Pet
+import com.kashwaa.shared.domain.Breed
+import com.kashwaa.shared.domain.Pet
 import com.example.androiddevchallenge.view.components.BreedsViewer
 import com.example.androiddevchallenge.view.components.PetsViewer
 

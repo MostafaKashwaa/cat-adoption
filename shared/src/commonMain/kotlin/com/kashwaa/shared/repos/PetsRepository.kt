@@ -13,17 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.domain
+package com.kashwaa.shared.repos
 
-data class Breed(
-    val id: String,
-    val name: String,
-    val imageUrl: String,
-    val childFriendly: Int = -1,
-    val dogFriendly: Int = -1,
-    val strangerFriendly: Int = -1,
-) {
-    companion object {
-        val defaultBreed = Breed("All", "All", "")
-    }
+import com.kashwaa.shared.domain.Breed
+import com.kashwaa.shared.domain.Pet
+
+interface PetsRepository {
+    fun getAllBreeds(): List<Breed>
+    fun getAllPets(): List<Pet>
+    fun getPetsByBreed(breed: Breed): List<Pet>
+    fun getPetDetails(petId: String): Pet
 }

@@ -26,7 +26,7 @@ import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.PetsDummyViewModelFactory
 import com.example.androiddevchallenge.PetsViewModel
 import com.example.androiddevchallenge.R
-import com.example.androiddevchallenge.domain.Pet
+import com.kashwaa.shared.domain.Pet
 import com.example.androiddevchallenge.view.Home
 import com.example.androiddevchallenge.view.PetDetails
 import com.google.gson.Gson

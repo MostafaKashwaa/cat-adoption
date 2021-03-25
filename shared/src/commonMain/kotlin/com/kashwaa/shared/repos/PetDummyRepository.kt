@@ -13,24 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.repos
+package com.kashwaa.shared.repos
 
-import com.example.androiddevchallenge.domain.Breed
-import com.example.androiddevchallenge.domain.Pet
+import com.kashwaa.shared.domain.Breed
+import com.kashwaa.shared.domain.Pet
 
-class PetDummyRepository private constructor() : PetsRepository {
-    companion object {
-        private var instance: PetDummyRepository? = null
-        fun getInstance(): PetDummyRepository {
-            if (instance == null) {
-                synchronized(this) {
-                    if (instance == null)
-                        instance = PetDummyRepository()
-                }
-            }
-            return instance!!
-        }
-    }
+object PetDummyRepository : PetsRepository {
+//    companion object {
+//        private var instance: PetDummyRepository? = null
+//        fun getInstance(): PetDummyRepository {
+//            if (instance == null) {
+//                synchronized(this) {
+//                    if (instance == null)
+//                        instance = PetDummyRepository()
+//                }
+//            }
+//            return instance!!
+//        }
+//    }
 
     override fun getAllBreeds(): List<Breed> {
         return listOf(

@@ -20,10 +20,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.androiddevchallenge.domain.Breed
-import com.example.androiddevchallenge.domain.Pet
-import com.example.androiddevchallenge.repos.PetDummyRepository
-import com.example.androiddevchallenge.repos.PetsRepository
+import com.kashwaa.shared.domain.Breed
+import com.kashwaa.shared.domain.Pet
+import com.kashwaa.shared.repos.PetDummyRepository
+import com.kashwaa.shared.repos.PetsRepository
 
 class PetsViewModel(private val petsRepository: PetsRepository) : ViewModel() {
 
@@ -41,6 +41,6 @@ class PetsViewModel(private val petsRepository: PetsRepository) : ViewModel() {
 @Suppress("UNCHECKED_CAST")
 class PetsDummyViewModelFactory() : ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return PetsViewModel(PetDummyRepository.getInstance()) as T
+        return PetsViewModel(PetDummyRepository) as T
     }
 }

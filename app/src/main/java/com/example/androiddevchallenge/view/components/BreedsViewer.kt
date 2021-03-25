@@ -49,7 +49,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.transform.CircleCropTransformation
 import com.example.androiddevchallenge.R
-import com.example.androiddevchallenge.domain.Breed
+import com.kashwaa.shared.domain.Breed
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable

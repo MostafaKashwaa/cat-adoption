@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.domain
+package com.kashwaa.shared.domain
 
-import com.google.gson.Gson
+import com.kashwaa.shared.toJsonString
 
 data class Pet(val name: String, val imageUrl: String, val breed: String) {
     override fun toString(): String {
-        return Gson().toJson(this)
+        return toJsonString(this)
     }
 }

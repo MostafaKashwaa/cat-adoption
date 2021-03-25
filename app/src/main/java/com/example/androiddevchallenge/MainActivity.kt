@@ -16,6 +16,7 @@
 package com.example.androiddevchallenge
 
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -46,12 +47,14 @@ import androidx.navigation.compose.rememberNavController
 import com.example.androiddevchallenge.navigation.AppNavHost
 import com.example.androiddevchallenge.navigation.Screen
 import com.example.androiddevchallenge.ui.theme.MyTheme
+import com.kashwaa.shared.Greeting
 import dev.chrisbanes.accompanist.insets.ProvideWindowInsets
 import dev.chrisbanes.accompanist.insets.statusBarsPadding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.i("MainActivity", "onCreate: ${Greeting().greeting()}")
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             window.statusBarColor = Color.Black.copy(alpha = 0.4f).toArgb()

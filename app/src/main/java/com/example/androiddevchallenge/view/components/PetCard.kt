@@ -34,7 +34,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.transform.CircleCropTransformation
-import com.example.androiddevchallenge.domain.Pet
+import com.kashwaa.shared.domain.Pet
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
