@@ -48,7 +48,7 @@ fun AppNavHost(navController: NavHostController) {
                 breeds = viewModel.breeds,
                 onChangeBreed = viewModel::onBreedChange,
                 onPetClick = {
-                    navController.navigate(route = "${Screen.PetDetails.route}/$it") {
+                    navController.navigate(route = "${Screen.PetDetails.route}/${it.toJson()}") {
                         popUpTo = navController.graph.startDestination
                         launchSingleTop = true
                     }
@@ -59,10 +59,13 @@ fun AppNavHost(navController: NavHostController) {
         composable(
             "${Screen.PetDetails.route}/{pet}"
         ) {
-            Log.i("Navigator", "AppNavHost: ${it.arguments?.getString("pet")}")
             it.arguments?.getString("pet")?.let { json ->
                 PetDetails(Gson().fromJson(json, Pet::class.java))
             }
         }
     }
+}
+
+fun Pet.toJson(): String {
+    return Gson().toJson(this)
 }
